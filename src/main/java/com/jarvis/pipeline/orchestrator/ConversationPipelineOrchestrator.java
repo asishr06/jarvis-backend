@@ -1,14 +1,23 @@
 package com.jarvis.pipeline.orchestrator;
 
 import com.jarvis.pipeline.context.PipelineContext;
+import com.jarvis.pipeline.executor.PipelineExecutor;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConversationPipelineOrchestrator {
 
-    public void execute(PipelineContext context) {
+    private final PipelineExecutor pipelineExecutor;
 
-        // future pipeline steps
+    public ConversationPipelineOrchestrator(
+            PipelineExecutor pipelineExecutor) {
 
+        this.pipelineExecutor = pipelineExecutor;
+    }
+
+    public void execute(
+            PipelineContext context) {
+
+        pipelineExecutor.execute(context);
     }
 }
